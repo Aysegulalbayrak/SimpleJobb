@@ -1,0 +1,101 @@
+﻿@using SimpleJob.Entities.Model
+@model Uye
+@{
+    ViewBag.Title = "Duzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .col-md-8 {
+            text-align: left;
+            float: right;
+            padding-right: 10px;
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+
+        .col-md-7 {
+            float: left;
+            padding-left: 10px;
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+
+        .col-md-pull-8 {
+            width: 1000px;
+            padding-left: 100px;
+            padding-top: 80px;
+        }
+
+        .body {
+            background-color: #fcd7d7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-xl">
+
+        @using (Html.BeginForm("Duzenle", "Profil", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {@Html.HiddenFor(x => x.UyeId)
+
+        <div style="width:200px" class="col-md-pull-8 form-control-sm">
+            <img src="@Model.Fotograf" style="width:300px; height:300px" />
+            @Html.Label("Fotoğraf Değiştir")
+
+
+            <br />
+            <input id="Fotograf" type="file" name="Fotograf" />
+            <br />
+
+            
+
+
+        </div>
+
+
+        <br />
+        <div class="col-md-8">
+            <h2 style=" font-size:large; color:indianred">Adı:</h2>
+
+            @Html.TextBoxFor(x => x.UyeAdi, new { @class = "form-control-sm" })
+            <br />
+            <br />
+            <h2 style=" font-size:large; color:indianred">Soyadı:</h2>
+
+            @Html.TextBoxFor(x => x.UyeSoyadi, new { @class = "form-control-sm" })
+            <br />
+            <br />
+            <h2 style=" font-size:large; color:indianred">Kullanıcı Adı:</h2>
+
+            @Html.TextBoxFor(x => x.UyeKAdi, new { @class = "form-control-sm" })
+            <br />
+            <br />
+            <h2 style=" font-size:large; color:indianred">Email:</h2>
+
+            @Html.TextBoxFor(x => x.UyeEmail, new { @class = "form-control-sm" })
+            <br />
+            <br />
+            <h2 style=" font-size:large; color:indianred">Şifre:</h2>
+
+            @Html.TextBoxFor(x => x.UyeSifre, new { @class = "form-control-sm" })
+            <br />
+            <br />
+            <h2 style=" font-size:large; color:indianred">Github:</h2>
+
+            @Html.TextBoxFor(x => x.github, new { @class = "form-control-sm" })
+            <br />
+            <br />
+            <h2 style=" font-size:large; color:indianred">Linkedln:</h2>
+
+            @Html.TextBoxFor(x => x.linkedln, new { @class = "form-control-sm" })
+            <br />
+            <br />
+            <input type="submit" value="Kaydet" />
+        </div>}
+    </div>
+</body>
+</html>
+

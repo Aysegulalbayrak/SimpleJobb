@@ -1,0 +1,154 @@
+﻿@using SimpleJob.Entities.Model
+@model List<Is>
+@{ 
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+        .itemContainer {
+            float: left;
+            margin: 25px;
+            padding: 30px;
+            width: auto;
+            height: auto;
+            background: #E3E4E6;
+            border-radius: 50px;
+            border-color: red;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        #is {
+            border-radius: 20px;
+        }
+        .table-avatar td {
+            display: block;
+        }
+        #avatar {
+            float: right;
+            border-radius: 50px;
+        }
+        #avatar2 {
+            float: right;
+            border-radius: 50px;
+        }
+        #foto {
+            
+            border-radius: 50px;
+        }
+        #foto2 {
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="is" style="padding: 50px; margin-top: 10px; margin-bottom: 10px; height: auto; background: #252757;">
+
+        <div class="itemContainer">
+            <div class="container" style="background: #c7c1c1"><h1><font color="#2190ff" size="4"><b>Yapılacaklar</b></font></h1></div>
+
+            <!--Yapılacaklar-->
+            <div class="container" style="background: #E8CFFC">
+
+                <table class="table-avatar">
+
+                    <tbody>
+                        @foreach (var job in Model)
+                        {
+                            if (job.IsKategoriId == 7)
+                            {
+                                <tr>
+                                    <td><b>@job.IsBaslik</b></td>
+                                    <td>
+                                        <a style="margin-left:-22px" class="btn btn-small" href="/Is/Detaylar/@job.IsId"> Detaylar </a>
+                                    </td>
+                                    <td>
+                                        <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!--Devam Etmekte-->
+        <div class="itemContainer">
+            <div class="container" style="background: #c7c1c1"><h1><font color="#ff5789" size="4"><b>Devam etmekte</b></font></h1></div>
+
+            <div class="container" style="background: #C7C3C3">
+
+                <table class="table-avatar">
+                    <tbody>
+                        @foreach (Is job in Model)
+                        {
+                            if (job.IsKategoriId == 8)
+                            {
+                                <tr>
+                                    <td><b>@job.IsBaslik</b></td>
+                                    <td id="avatar">
+
+                                        <img id="foto" style=" width: 70px; height: 70px;" src="@job.Uye.Fotograf" />
+                                    </td>
+                                    <td>
+                                        <a style="margin-left:-22px" class="btn btn-small" href="/Is/Goruntule/@job.IsId"> Görüntüle </a>
+                                    </td>
+                                    <td>
+                                        <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--Tamamlanan-->
+        <div class="itemContainer">
+            <div class="container" style="background: #c7c1c1"><h1><font color="#268048" size="4"><b>Tamamlanan</b></font></h1></div>
+
+            <div class="container" style="background: #C7C3C3">
+                <table class="table-avatar">
+                    <tbody>
+                        @foreach (Is job in Model)
+                        {
+                            if (job.IsKategoriId == 9)
+                            {
+                                <tr>
+                                    <td><b>@job.IsBaslik</b></td>
+                                    <td id="avatar2">
+                                        <img id="foto2" style=" width: 70px; height: 70px;" src="@job.Uye.Fotograf" />
+                                    </td>
+                                    <td>
+                                        <a style="margin-left:-22px" class="btn btn-small" href="/Is/Goruntule/@job.IsId"> Görüntüle </a>
+                                    </td>
+                                    <td>
+                                        <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>
+                                    </td>
+                                    
+                                      
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <div style="clear:both;"></div>
+
+    </div>
+    </body>
+</html>
+

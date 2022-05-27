@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StartConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            string kullaniciAdi = "Ted";
+            string sifre = "111a";
+            string username = kullaniciAdi.ToLower();
+            string password = sifre.Replace("1", "a");
+
+            Console.WriteLine(kullaniciAdi);
+            Console.WriteLine(sifre);
+            Console.WriteLine(username);
+            Console.WriteLine(password);
+
+
+
+
+            Console.Read();
+
+        }
+    }
+}

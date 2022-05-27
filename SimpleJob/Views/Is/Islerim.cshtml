@@ -1,0 +1,181 @@
+﻿@using SimpleJob.Entities.Model
+@model List<Is>
+@{
+    ViewBag.Title = "Islerim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+
+        .cards-section {
+            h3, h5
+
+        {
+            font-weight: 700 !important;
+        }
+
+        }
+
+        .btn-green {
+            background-color: #17c3ba;
+            color: #fff;
+            width:90px;
+            padding:0;
+            margin-top: 50px;
+
+            
+            /*width:35px;*/
+        }
+     
+
+        .btn:hover {
+            color: #fff;
+            opacity: 0.8 !important;
+        }
+
+        .btn-pad {
+            padding-bottom: 50px;
+        }
+
+        .item-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: Auto;
+            height: 100%;
+        }
+
+        .card-title {
+            padding: 30px;
+            border-radius: 5px 5px 0 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .body-text {
+            height: 200px;
+            width:100%;
+            padding: 10px 10px 20px;
+        }
+
+        /* colors  */
+
+        .red {
+            background-color: #eb5168;
+        }
+
+        .l-blue {
+            background-color: #4ec1fc;
+        }
+
+        .green {
+            background-color: #17c3ba;
+        }
+
+        .blue {
+            background-color: #1d386c;
+        }
+
+        /* ./Custom cards ============================================== */
+
+
+
+    </style>
+</head>
+<body>
+    
+
+        <!-- Custom cards -->
+        <section class="mt-5 cards-section">
+            <div class="container">
+                <h3>İşlerim</h3>
+                <div class="row">
+
+                    <!--Tamamlanan-->
+                    <div class="col-lg-3 col-md-6 mt-md-3 d-flex">
+                        <div class="item-card d-flex">
+                            <div class="body">
+                                <div class="card-title red">
+                                    <h5>Tamamlanan</h5>
+                                </div>
+                                <div class="body-text text-center">
+                                    <table class="table-avatar">
+                                        <tbody>
+                                            @foreach (Is job in Model)
+                                            {
+                                                if (job.IsKategoriId == 9)
+                                                {
+                                                    <tr>
+                                                        <td><b>@job.IsBaslik</b></td>
+                                                       
+                                                        <td>
+                                                            <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>&nbsp;
+                                                        </td>
+                                                        <td>
+                                                            <a style="margin-left:12px; margin-top:0px" class="btn btn-green" href="/Is/Goruntule/@job.IsId"> Görüntüle </a>&nbsp;
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                              
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <!--Devam Etmekte-->
+                    <div class="col-lg-3 col-md-6 mt-md-3 d-flex">
+                        <div class="item-card d-flex">
+                            <div class="body">
+                                <div class="card-title red">
+                                    <h5>Devam Etmekte</h5>
+                                </div>
+                                <div class="body-text text-center">
+                                    <table class="table-avatar">
+                                        <tbody>
+                                            @foreach (Is job in Model)
+                                            {
+                                                if (job.IsKategoriId == 8)
+                                                {
+                                                    <tr>
+                                                        <td><b>@job.IsBaslik</b></td>
+                                                        
+
+                                                        <td>
+                                                            <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>&nbsp;
+                                                        </td>
+                                                        <td class="text-center btn-pad">
+                                                            <a style="margin-left: 12px; margin-top: 0px " class="btn btn-green" href="/Is/Duzenle/@job.IsId"> Düzenle </a>&nbsp;
+                                                            <a style="margin-left: 12px; margin-top: 0px " class="btn btn-green" href="/Is/Goruntule/@job.IsId"> Goruntule </a>&nbsp;
+                                                        </td>
+                                                    </tr>
+                                              
+                                            }
+                                        }
+
+                                            </tbody>
+                                        </table>
+                                </div>
+                             
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-yellow" style="width:50%"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+   
+</body>
+</html>
+

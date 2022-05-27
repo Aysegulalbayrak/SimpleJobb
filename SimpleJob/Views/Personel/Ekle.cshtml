@@ -1,0 +1,150 @@
+﻿@model SimpleJob.Entities.Model.Uye
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <style type="text/css">
+        .container-xl {
+            background-color: #8993C0;
+        }
+
+        .form-style-3 {
+            max-width: 450px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            margin: auto;
+            padding: 50px 50px 50px 50px;
+        }
+
+            .form-style-3 label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+                .form-style-3 label > span {
+                    float: left;
+                    width: 100px;
+                    color: gray;
+                    font-weight: bold;
+                    font-size: 13px;
+                    text-shadow: 1px 1px 1px #fff;
+                }
+
+            .form-style-3 fieldset {
+                border-radius: 10px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                margin: 0px 0px 10px 0px;
+                border: 1px solid #FFD2D2;
+                padding: 20px;
+                background: #CFD5F2;
+                box-shadow: inset 0px 0px 15px #8993C0;
+                -moz-box-shadow: inset 0px 0px 15px #8993C0;
+                -webkit-box-shadow: inset 0px 0px 15px #8993C0;
+            }
+
+                .form-style-3 fieldset legend {
+                    color: grey;
+                    border-top: 1px solid #CFD5F2;
+                    border-left: 1px solid #CFD5F2;
+                    border-right: 1px solid #CFD5F2;
+                    border-radius: 5px 5px 0px 0px;
+                    -webkit-border-radius: 5px 5px 0px 0px;
+                    -moz-border-radius: 5px 5px 0px 0px;
+                    background: #CFD5F2;
+                    padding: 0px 8px 3px 8px;
+                    box-shadow: -0px -1px 2px #CFD5F2;
+                    -moz-box-shadow: -0px -1px 2px #8993C0;
+                    -webkit-box-shadow: -0px -1px 2px #8993C0;
+                    font-weight: normal;
+                    font-size: 12px;
+                }
+
+            .form-style-3 textarea {
+                width: 250px;
+                height: 100px;
+            }
+
+            .form-style-3 input[type=text],
+            .form-style-3 input[type=date],
+            .form-style-3 input[type=datetime],
+            .form-style-3 input[type=number],
+            .form-style-3 input[type=search],
+            .form-style-3 input[type=time],
+            .form-style-3 input[type=url],
+            .form-style-3 input[type=email],
+            .form-style-3 select,
+            .form-style-3 textarea {
+                border-radius: 3px;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border: 1px solid #FFC2DC;
+                outline: none;
+                color: #F072A9;
+                padding: 5px 8px 5px 8px;
+                box-shadow: inset 1px 1px 4px #8993C0;
+                -moz-box-shadow: inset 1px 1px 4px #8993C0;
+                -webkit-box-shadow: inset 1px 1px 4px #8993C0;
+                background: #CFD5F2;
+                width: 50%;
+            }
+
+            .form-style-3 input[type=submit],
+            .form-style-3 input[type=button] {
+                background: #CFD5F2;
+                border: 1px solid #C94A81;
+                padding: 5px 15px 5px 15px;
+                color: grey;
+                box-shadow: inset -1px -1px 3px #8993C0;
+                -moz-box-shadow: inset -1px -1px 3px #8993C0;
+                -webkit-box-shadow: inset -1px -1px 3px #8993C0;
+                border-radius: 3px;
+                border-radius: 3px;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                font-weight: bold;
+            }
+
+        .required {
+            color: red;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-xl">
+        <div class="form-style-3">
+
+
+            @using (Html.BeginForm("Ekle", "Uye", FormMethod.Post))
+            {
+                <fieldset>
+                    <legend>Personel</legend>
+                    @Html.Label("Ad: ")
+                    @Html.TextBoxFor(x => x.UyeAdi, new { @class = "form" })
+
+                    @Html.Label("Soyad: ")
+                    @Html.TextBoxFor(x => x.UyeSoyadi, new { @class = "form" })
+
+                    @Html.Label("Email: ")
+                    @Html.TextBoxFor(x => x.UyeEmail, new { @class = "form" })
+
+                </fieldset>
+
+                <fieldset>
+
+                    <label for="field6"><span>Davet Mesajı(isteğe bağlı) <span class="required"></span></span><textarea name="" class="textarea-field"></textarea></label>
+                   
+
+                </fieldset>
+
+
+
+                <button class="btn btn-app"> Ekle </button>}
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@using SimpleJob.Entities.Model
+@model Is
+@{ ViewBag.Title = "Düzenle";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml"; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <div class="tab-pane in-range" id="settings">
+
+    @using (Html.BeginForm("Duzenle", "Is", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {@Html.HiddenFor(x=>x.IsId)
+
+    @Html.Label("İş Açıklama")
+    <br />
+    @Html.TextBoxFor(x => x.IsAciklama, new { @class = "form-control-sm" })
+    <br />
+    <br />
+
+    @Html.Label("İlerleme Durumu")
+    <br />
+    @Html.EditorFor(x => x.IlerlemeDurumu, new { @class = "in-range" })
+    <br />
+    <br />
+
+    @Html.Label("Dosya Ekle")
+
+
+    <br />
+    <input id="DosyaAdresi" type="file" name="DosyaAdresi" />
+    <br />
+
+    <input type="submit" value="Kaydet" />}
+</body>
+</html>
+

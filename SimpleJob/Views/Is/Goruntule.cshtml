@@ -1,0 +1,126 @@
+﻿
+@using SimpleJob.Entities.Model
+@model Is
+@{
+    ViewBag.Title = "Goruntule";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .progress {
+            position: relative;
+            width: 200px;
+            border: 1px solid #333;
+            position: relative;
+            padding: 3px;
+        }
+
+        .bar {
+            background-color: #00ff00;
+            height: 30px;
+            transition: width 150ms;
+        }
+
+        .percent {
+            position: absolute;
+            display: inline-block;
+            top: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .container-xl {
+            background-color: #dcdee2;
+            height: 500px;
+        }
+
+        .container {
+            background-color: #6f8fae;
+            width: 400px;
+            height: auto;
+            position: center;
+            border-radius: 10px;
+        }
+
+        .fieldset {
+            display: flex;
+        }
+
+        .h1 {
+            color: chartreuse;
+        }
+
+        #icerik {
+            margin-left: 10px;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+
+        #baslık {
+            margin-top: 20px;
+            margin-left: 0px;
+            margin-right: 200px;
+            width: auto;
+        }
+
+        #baslık2 {
+            margin-top: 20px;
+        }
+
+        .btn-dark {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-xl">
+        <div id="baslık"><h1 style="text-align: center; color:#f8735a; font-size:x-large">Detaylar</h1></div>
+
+        <div class="container">
+            <div class="xs" id="icerik">
+
+
+                <fieldset>
+
+
+                    <div id="baslık2" style="font-size:large; color:#071f55">@Model.IsBaslik</div>&nbsp;
+                    <div class="display">@Model.IsKategori.IsKategoriAdi</div>&nbsp;
+
+                    <div class="progress">
+                        <div class="bar" style="width:@Model.IlerlemeDurumu%;"></div>
+                        <div class="percent">@Model.IlerlemeDurumu</div>
+                    </div>&nbsp;
+
+                   
+
+
+                    <div class="display">
+                        <div class="w3-progress-container">
+                            <label for="UstlenenUyeId">Üstlenen: </label>&nbsp;
+                            <div class="img-bordered"><img style="border-radius: 10px ; width:60px; height:60px;" src="@Model.Uye.Fotograf"></div>
+
+                            <div>@Model.Uye.UyeAdi @Model.Uye.UyeSoyadi</div>&nbsp;
+                            @if (Model.DosyaAdresi!=null)
+                            {
+                                <div>
+                                    <a style="width:60px;" class="btn-block glyphicon-save-file " href="@Model.DosyaAdresi">Dosya</a>
+                                </div>
+
+                            }
+                            <br/>
+                            <div><a class="btn-danger" href="/Is/Index">Geri</a></div>
+                        </div>&nbsp;
+
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+

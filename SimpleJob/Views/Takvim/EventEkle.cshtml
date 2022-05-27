@@ -1,0 +1,131 @@
+﻿@model SimpleJob.Entities.Model.Takvim
+@{
+    ViewBag.Title = "EventEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        body {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            font-size: 13px;
+            line-height: 30px;
+            color: #888;
+            background: #79A7A8;
+        }
+        #dıs {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            background: #79A7A8;
+        }
+        .form {
+            border: none !important;
+            margin: 0 0 10px;
+            min-width: 100%;
+            padding: 0;
+            width: 100%;
+           
+        }
+        
+        #contact form:focus {
+            outline: 0;
+            border: 1px solid #aaa;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+            background: #355C7D;
+            -webkit-transition: background 0.4s ease-in-out;
+            -moz-transition: background 0.4s ease-in-out;
+            transition: background-color 0.4s ease-in-out;
+        }
+        #ic {
+            background-size: 500px;
+            background-color: #8fb5b6;
+            margin: auto;
+            width:130%;
+            padding: 80px 80px 80px 80px ;
+        }
+        .container-xl {
+            background-color: #79A7A8;
+        }
+        .btn btn-contact-us{
+            margin: 0 auto;
+        }
+ 
+     
+    </style>
+</head>
+<body>
+    <div style="margin:15px" class="container-xl">
+        <div class="container" id="dıs">
+            <form id="contact">
+                <div id="ic">
+                    <h2><img src="~/BootStraps/web/images/plus.png" ><img /> <b> Event Ekle</b></h2>
+                    <br />
+                    @using (Html.BeginForm("EventEkle", "Takvim", FormMethod.Post))
+                    {
+                        @Html.Label("Başlık:  ")
+                        @Html.TextBoxFor(x => x.title, new { @class = "form" })
+
+                        <br />
+                        <br />
+                        @Html.Label("Başlangıç:  ")
+                        <br />
+                        @Html.EditorFor(x => x.start, new { htmlAttributes = new { @class = "datepicker" } })
+                        <br />
+                        <br />
+
+                        @Html.Label("Bitiş:  ")
+                        <br />
+                        @Html.EditorFor(x => x.end, new { htmlAttributes = new { @class = "datepicker" } })
+                        <br />
+                        <br />
+
+
+
+                        <button class="btn btn-app" > Ekle </button>}
+                </div>
+         
+                <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+            </form>
+        </div>
+        
+
+
+
+
+        @section Scripts{
+            <script src="~/Scripts/jquery-ui-1.13.1.min.js"></script>
+            <script>
+                $(function () {
+                    $(".datepicker").datepicker({
+                        dateFormat: "yy/mm/dd",
+                        changeMonth: true,
+                        changeYear: true,
+                        minDate: new Date(2020, 0, 1),
+                        maxDate: new Date(2030, 0, 1),
+                        showOn: "both",
+                        
+                        //buttonText: "fa fa-calendar"
+                    });
+
+                });
+
+            </script>
+        }
+        
+
+    </div>
+
+</body>
+</html>

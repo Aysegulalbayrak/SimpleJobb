@@ -1,0 +1,56 @@
+﻿@model SimpleJob.Entities.Model.Is
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+        .content {
+            background-color: #dbf8ff;
+            /* margin:50px 50px 50px 50px;*/
+            padding: 100px 100px 100px 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" style="margin:15px">
+        @using (Html.BeginForm("Ekle", "Is", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.Label("İş Başlık")
+            <br />
+            @Html.TextBoxFor(x => x.IsBaslik, new { @class = "form-control-sm" })
+            <br />
+            <br />
+
+            @Html.Label("İş Açıklama")
+            <br />
+            @Html.TextBoxFor(x => x.IsAciklama, new { @class = "form-control-sm" })
+            <br />
+            <br />
+
+            @Html.Label("Son Teslim Tarihi")
+            <br />
+            @Html.TextBoxFor(x => x.SonTeslimTarihi, new { @class = "form-control-sm" })
+            <br />
+            <br />
+
+            @Html.Label("Dosya Ekle")
+
+            
+            <br />
+            <input id="DosyaAdresi" type="file" name="DosyaAdresi" />
+            <br />
+
+            <input type="submit" value="Kaydet" />
+        }
+
+
+
+    </div>
+</body>
+</html>
+

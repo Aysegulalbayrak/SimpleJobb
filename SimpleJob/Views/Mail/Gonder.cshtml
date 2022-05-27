@@ -1,0 +1,61 @@
+﻿@model SimpleJob.Entities.Model.Mail
+@{
+    ViewBag.Title = "Gonder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+    <style>
+        td {
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <center>
+        <div style="background-color:#a0c7be ;padding:20px;margin:10px; height:500px;">
+            @using (Html.BeginForm("Gonder", "Mail", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <table style="background-color:#fff ; padding:10px; margin:10px; border:1;  ">
+                    <tr>
+                        <td>Alıcı E-Posta:</td>
+                        <td>
+                            @Html.TextBoxFor(x => x.AliciMailAdresi, new { @class = "form" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gönderen E-Posta:</td>
+                        <td>
+                            @Html.TextBoxFor(x => x.GondericiMailAdresi, new { @class = "form" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Konu:</td>
+                        <td> @Html.TextBoxFor(x => x.MailBaslik, new { @class = "form" })</td>
+                    </tr>
+                    <tr>
+                        <td>Mesaj:</td>
+                        <td> @Html.TextBoxFor(x => x.MailAciklama, new { @class = "form" })</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit">Gönder</button></td>
+                    </tr>
+                </table>
+                <h1>@ViewBag.message</h1>
+
+            }
+
+        </div>
+    </center>
+   
+       
+        
+   
+
+</body>
+</html>

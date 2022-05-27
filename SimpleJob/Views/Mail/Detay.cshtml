@@ -1,0 +1,97 @@
+﻿@using SimpleJob.Entities.Model
+@model Mail
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <style>
+        .container-lg {
+            width: 100%;
+            margin: 0px;
+            background: #f2c4e7;
+            overflow: hidden;
+            font: 16px Helvetica;
+            position: relative;
+            padding: 0px 0px;
+        }
+        .mail_box {
+            
+            width: 70%;
+            height: 360px;
+            padding: 40px 45px;
+            background:white;
+            margin:5% 12%;
+
+            border-radius:10px;
+        }
+        .mail_slot {
+            margin: 25px 0;
+        }
+        .family {
+            height: 20px;
+            background: #2ecc71;
+            padding: 2.5px 5px;
+            border-radius: 2px;
+            margin-right: 5px;
+            color: white;
+        }
+        button {
+            margin: 20px 25px;
+            display: block;
+            width: 100px;
+            border: none;
+            border-radius: 5px;
+            height: 25px;
+            line-height: 20px;
+            color: #ecf0f1;
+            background: #C86242;
+            font-size: .75em;
+            transition: all ease-in-out .1s;
+        }
+
+        button.reply {
+            margin: 10px 0;
+            float: right;
+            display: block;
+            width: 75px;
+            border: none;
+            border-radius: 5px;
+            height: 25px;
+            line-height: 20px;
+            color: #ecf0f1;
+            background: #C86242;
+            font-size: .75em;
+            transition: all ease-in-out .1s;
+        }
+
+            button.reply:hover {
+                background: #c0392b;
+            }
+        .h3 {
+            float: left;
+            padding: 0 0 15px 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-lg">
+        <div class='mail_box'>
+            <div>
+                <h1 style="font-size:x-large">@Model.MailBaslik</h1>
+                <h2 style="font-size:medium">@Model.GondericiMailAdresi</h2>
+                <h3 style="font-size:medium">@Model.MailTarih</h3>
+                <p style="font-size:small">@Model.MailAciklama</p>
+
+                <button href="/Mail/Gonder/@Model.MailId" class='reply'>Reply</button>
+            </div>
+           
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridDay'
+                },
+                initialDate:'2022-04-07',
+                locale: "tr",
+
+                navLinks: true,
+                selectable: true,
+                selectMirror: true,
+               
+                editable: true,
+                dayMaxEvents: true,
+                events: "/Takvim/EventleriGetir"
+
+            });
+
+            calendar.render();
