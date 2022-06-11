@@ -28,8 +28,9 @@ namespace SimpleJob.Controllers
             if (uye != null)
                 {
                     FormsAuthentication.SetAuthCookie(uye.UyeKAdi, false);
+                    
                     Session["UyeId"] = uye.UyeId;
-                    Session["UyeIEmail"] = uye.UyeEmail;
+                    Session["UyeEmail"] = uye.UyeEmail;
                     Session["Uye"] = uye.UyeAdi+" "+uye.UyeSoyadi;
                     Session["UyeFoto"] = uye.Fotograf;
                     Session["UyeYetkiId"] = uye.UyeUnvanId;

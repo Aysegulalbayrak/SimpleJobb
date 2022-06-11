@@ -127,8 +127,8 @@ namespace SimpleJob.Models
         }
 
         //Mail
-        private static List<Mail> mails;
-        public static List<Mail> Mails
+        private static List<Entities.Model.Mail> mails;
+        public static List<Entities.Model.Mail> Mails
         {
             get
             {

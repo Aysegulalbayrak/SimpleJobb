@@ -8,8 +8,8 @@ namespace SimpleJob.Models
     public class Is1
     {
         
-        public int yapilacak { get; set; }
-        public int devamEtmekte { get; set; }
-        public int tamamlanan { get; set; }
+        public string IsKategoriAdi { get; set; }
+        public int IsKategoriSayisi { get; set; }
+       
     }
 }

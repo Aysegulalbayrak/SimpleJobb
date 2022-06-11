@@ -1,0 +1,85 @@
+﻿@using SimpleJob.Entities.Model
+@model Uye
+@{
+    ViewBag.Title = "Goruntule";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .col-md-8 {
+            text-align: left;
+            float: right;
+            padding-right: 100px;
+            padding-top: 80px;
+            width: 1001px;
+            height: 1001px;
+        }
+
+        .col-md-pull-8 {
+            width: 200px;
+            float: Left;
+            padding-left: 250px;
+            padding-top: 80px;
+        }
+
+        .row-no-gutter {
+            padding-top: 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="width:2000px" class="col-md-9">
+        <div class="card mb-3" style="width:135% ; background-color:lightgray">
+
+            <div class="card-body" style="">
+                <div class="row-no-gutter">
+                    <div style="width:200px" class="col-md-pull-8">
+                        <img src="@Model.Fotograf" width="200px" height="200px" />
+                        <!--<a class="btn btn-success" href="/Profil/ResimEkle/@Model.UyeId">Güncelle</a>&nbsp;
+        <a class="btn btn-danger" href="/Profil/ResimSil/@Model.UyeId">Sil</a>-->
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-4">
+                            <b>Ad Soyad:</b> @Model.UyeAdi @Model.UyeSoyadi
+                        </div>
+                        <div class="col-md-4">
+                            <b>Kullanıcı Adı:</b> @Model.UyeKAdi
+                        </div>
+                        <div class="col-md-4">
+                            <b>Mail:</b> @Model.UyeEmail
+                        </div>
+                        <div class="col-md-4">
+                            <b>Unvan:</b> @Model.Unvan.UnvanAdi
+                        </div>
+                        <div class="col-md-4">
+                            <b>Github:</b><a href="@Model.github">@Model.github</a>
+                        </div>
+                        <div class="col-md-4">
+                            <b>Linkedln:</b> <a href="@Model.linkedln">@Model.linkedln</a>
+                        </div>
+                        <div class="col-md-4">
+                            @if (Session["UyeYetkiId"].ToString() == "4")
+                            {
+                                <div><a style="height:30px; width:50px; font-size:small;" class="btn btn-danger" href="/Personel/Sil/@Model.UyeId" >Sil<br/></a></div>
+                            }
+                        </div>
+
+
+
+
+                    </div>
+                  
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
+

@@ -4,75 +4,85 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Net.Mail;
-using SimpleJob.Models;
-using System.Net.Http;
 
 namespace SimpleJob.Controllers
 {
-    [Authorize]
     public class MailController : Controller
     {
         // GET: Mail
         SimpleJobContext db = new SimpleJobContext();
-        public ActionResult Index(string aranacakKelime)
-        {
-            var mailler = db.Mail.Where(x => x.MailDurumu == true || x.MailDurumu == false);
-            if (!string.IsNullOrEmpty(aranacakKelime))
-            {
-                mailler = mailler.Where(x => x.AliciMailAdresi.Contains(aranacakKelime));
-            }
-            
-            if (Session["UyeId"] !=null)
-            {
-                int uyeId = int.Parse (Session["UyeId"].ToString());
-                mailler = mailler.Where(x => x.UyeId == uyeId);
-            }
-            
-
-
-            return View(mailler.ToList());
-            
-        }
-
-         [HttpGet] 
-
-        public ActionResult Gonder()
+   
+        [HttpGet]
+        public ActionResult Send()
         {
 
-
-                return View();
-
-        }
-
-
-        [HttpPost]
-        public ActionResult Gonder(Mail mail)
-        {
-            //Mail email = db.Mail.Include("Uye").SingleOrDefault(x => x.GondericiMailAdresi==mail);
-            HttpClient hc = new HttpClient();
-            hc.BaseAddress = new Uri("https://localhost:44395/api/Email");
-            var consumeWebApi = hc.PostAsJsonAsync<Mail>("Email", mail);
-            consumeWebApi.Wait();
-
-            var sendMail = consumeWebApi.Result;
-
-            if (sendMail.IsSuccessStatusCode)
-            {
-                ViewBag.message = "posta gönderildi" + mail.AliciMailAdresi.ToString();
-            }
-
-
-            
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Send(Mail pMail)
+        {
+
+
+            pMail.GondericiId = int.Parse(Session["UyeId"].ToString());
+            pMail.MailTarih = DateTime.Now;
+            pMail.MailDurumu = true;
+            db.Mail.Add(pMail);
+            db.SaveChanges();
+            return RedirectToAction("Giden");
+
+
+        }
+
+        public ActionResult Gelen()
+        {
+            var gelenler = db.Mail.Include("Uye").Where(x => x.MailDurumu == true ) ;
+
+            if (Session["UyeId"] != null)
+            {
+                int uyeId = int.Parse(Session["UyeId"].ToString());
+                gelenler = gelenler.Where(x => x.UyeId == uyeId);
+            }
+            return View(gelenler.ToList());
+
+        }
+
+        public ActionResult Giden()
+        {
+
+            var gidenler = db.Mail.Include("Uye").Where(x => x.MailDurumu == true );
+            if (Session["UyeId"] != null)
+            {
+                int uyeId = int.Parse(Session["UyeId"].ToString());
+                gidenler = gidenler.Where(x => x.GondericiId == uyeId);
+            }
+            return View(gidenler.ToList());
+        }
 
         public ActionResult Detay(int id)
         {
-            Mail mail = db.Mail.Find(id);
+            var mail = db.Mail.Where(x => x.MailId == id).FirstOrDefault();
 
             return View(mail);
         }
+
+        [HttpGet]
+        public ActionResult Garbage()
+        {
+            var silinenler = db.Mail.Include("Uye").Where(x => x.MailDurumu == true);
+            return View(silinenler);
+        }
+
+        [HttpPost]
+        public ActionResult Garbage(int id)
+        {
+            Mail mail = db.Mail.Find(id);
+            mail.MailDurumu = false;
+            db.SaveChanges();
+            return RedirectToAction("Garbage");
+        }
+      
+
+
     }
 }

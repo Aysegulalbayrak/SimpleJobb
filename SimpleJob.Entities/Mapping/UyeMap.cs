@@ -21,6 +21,8 @@ namespace SimpleJob.Entities.Mapping
             this.Property(p => p.UyeSoyadi).HasColumnType("nvarchar").HasMaxLength(100);
             this.Property(p => p.UyeEmail).HasColumnType("nvarchar").HasMaxLength(500);
             this.Property(p => p.UyeKAdi).HasColumnType("nvarchar").HasMaxLength(500);
+            this.Property(p => p.TelefonKodu).HasColumnType("nvarchar").HasMaxLength(50);
+            this.Property(p => p.TelefonNo).HasColumnType("nvarchar").HasMaxLength(50);
             this.Property(p => p.UyeSifre).HasColumnType("nvarchar").HasMaxLength(500);
             this.Property(p => p.UyeDurumu).HasColumnType("bit");
             this.Property(p => p.UyeCinsiyet).HasColumnType("nvarchar").HasMaxLength(50);

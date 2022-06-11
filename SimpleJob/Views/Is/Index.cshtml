@@ -14,9 +14,9 @@
             float: left;
             margin: 25px;
             padding: 30px;
-            width: auto;
+            width: 30%;
             height: auto;
-            background: #E3E4E6;
+            background: #5d8b6f;
             border-radius: 50px;
             border-color: red;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -46,13 +46,13 @@
     </style>
 </head>
 <body>
-    <div id="is" style="padding: 50px; margin-top: 10px; margin-bottom: 10px; height: auto; background: #252757;">
+    <div id="is" style="padding: 50px; margin-top: 10px; margin-bottom: 10px; height: auto; background: #ece9e9;">
 
         <div class="itemContainer">
-            <div class="container" style="background: #c7c1c1"><h1><font color="#2190ff" size="4"><b>Yapılacaklar</b></font></h1></div>
+            <div class="container" style="background: #f3e6fe"><h1><font color="#2190ff" size="4"><b>Yapılacaklar</b></font></h1></div>
 
             <!--Yapılacaklar-->
-            <div class="container" style="background: #E8CFFC">
+            <div class="container" style="background: #f3e6fe">
 
                 <table class="table-avatar">
 
@@ -64,7 +64,7 @@
                                 <tr>
                                     <td><b>@job.IsBaslik</b></td>
                                     <td>
-                                        <a style="margin-left:-22px" class="btn btn-small" href="/Is/Detaylar/@job.IsId"> Detaylar </a>
+                                        <a style="margin-left:-22px" class="btn btn-small" href="/Is/Detay/@job.IsId"> Detaylar </a>
                                     </td>
                                     <td>
                                         <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>
@@ -80,9 +80,9 @@
 
         <!--Devam Etmekte-->
         <div class="itemContainer">
-            <div class="container" style="background: #c7c1c1"><h1><font color="#ff5789" size="4"><b>Devam etmekte</b></font></h1></div>
+            <div class="container" style="background: #f3e6fe"><h1><font color="#ff5789" size="4"><b>Devam etmekte</b></font></h1></div>
 
-            <div class="container" style="background: #C7C3C3">
+            <div class="container" style="background: #f3e6fe">
 
                 <table class="table-avatar">
                     <tbody>
@@ -113,9 +113,9 @@
 
         <!--Tamamlanan-->
         <div class="itemContainer">
-            <div class="container" style="background: #c7c1c1"><h1><font color="#268048" size="4"><b>Tamamlanan</b></font></h1></div>
+            <div class="container" style="background: #f3e6fe"><h1><font color="#268048" size="4"><b>Tamamlanan</b></font></h1></div>
 
-            <div class="container" style="background: #C7C3C3">
+            <div class="container" style="background: #f3e6fe">
                 <table class="table-avatar">
                     <tbody>
                         @foreach (Is job in Model)

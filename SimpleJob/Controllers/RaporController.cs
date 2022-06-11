@@ -8,34 +8,66 @@ using System.Web.Mvc;
 using System.Web.Script.Services;
 using System.Web.Services;
 using Is1 = SimpleJob.Models.Is1;
+//using IsRaporViewModel = SimpleJob.Models.IsRaporViewModel;
+
+
 
 namespace SimpleJob.Controllers
 {
-    
+
     public class RaporController : Controller
     {
-        SimpleJobContext db = new SimpleJobContext();
+        
+        
+        
         // GET: Rapor
         public ActionResult Index()
+
         {
-            return View();
+            IsRaporViewModel models = new IsRaporViewModel();
+
+            using(SimpleJobContext db = new SimpleJobContext()) { 
+            List<Is> isler = db.Is.Include("Iskategori").ToList();
+            List<Uye> uyeler = db.Uye.Include("Unvan").Where(x => x.UyeDurumu==true).ToList();
+            
+            models.Tub = new Tuple<List<Is>, List<Uye>>(isler, uyeler);
+
+            }
+            return View(models);
         }
 
-        public ActionResult GrafikOlustur()
+        public ActionResult Grafik()
         {
-            return Json(isler(), JsonRequestBehavior.AllowGet);
+            return Json(IsKategoris(),JsonRequestBehavior.AllowGet);
         }
-        public List<Is1> isler()
+
+        public List<Is1> IsKategoris()
         {
-            List<Is1> y = new List<Is1>();
-            y = db.Is.Select(x => new Is1
+            using (SimpleJobContext db = new SimpleJobContext())
             {
-                yapilacak = x.(x.IsKategoriId==7).Count(),
-                devamEtmekte = Is.Find(x.IsKategoriId == 8),
-                tamamlanan = Is.Find(x.IsKategoriId == 9)
-            }).ToList();
-            return y;
+                List<Is1> job = new List<Is1>();
+                job.Add(new Is1()
+                {
+                    IsKategoriAdi = "Yapılacak",
+                    IsKategoriSayisi = db.Is.Count(x => x.IsKategoriId == 7),
+
+                });
+                job.Add(new Is1()
+                {
+                    IsKategoriAdi = "Devam Etmekte",
+                    IsKategoriSayisi = db.Is.Count(x => x.IsKategoriId == 8),
+
+                });
+                job.Add(new Is1()
+                {
+                    IsKategoriAdi = "Tamamlanan",
+                    IsKategoriSayisi = db.Is.Count(x => x.IsKategoriId == 9),
+
+                });
+                return job;
+            }
         }
-       
+
+        
     }
-}
+} 

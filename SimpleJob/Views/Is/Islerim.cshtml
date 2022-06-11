@@ -10,15 +10,10 @@
 <head>
     <style>
 
-
-        .cards-section {
-            h3, h5
-
-        {
-            font-weight: 700 !important;
+        .container{
+            height:200%;
         }
-
-        }
+   
 
         .btn-green {
             background-color: #17c3ba;
@@ -26,9 +21,6 @@
             width:90px;
             padding:0;
             margin-top: 50px;
-
-            
-            /*width:35px;*/
         }
      
 
@@ -44,20 +36,22 @@
         .item-card {
             border: 1px solid #ddd;
             border-radius: 5px;
-            width: Auto;
-            height: 100%;
+            width: 100%;
+            height: 200%;
         }
 
         .card-title {
             padding: 30px;
             border-radius: 5px 5px 0 0;
             color: #fff;
+            width: 100%;
             text-align: center;
+            
         }
 
         .body-text {
             height: 200px;
-            width:100%;
+            width:10%;
             padding: 10px 10px 20px;
         }
 
@@ -79,9 +73,7 @@
             background-color: #1d386c;
         }
 
-        /* ./Custom cards ============================================== */
-
-
+    
 
     </style>
 </head>
@@ -91,7 +83,7 @@
         <!-- Custom cards -->
         <section class="mt-5 cards-section">
             <div class="container">
-                <h3>İşlerim</h3>
+               
                 <div class="row">
 
                     <!--Tamamlanan-->
@@ -99,7 +91,7 @@
                         <div class="item-card d-flex">
                             <div class="body">
                                 <div class="card-title red">
-                                    <h5>Tamamlanan</h5>
+                                    <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tamamlanan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
                                 </div>
                                 <div class="body-text text-center">
                                     <table class="table-avatar">
@@ -110,7 +102,7 @@
                                                 {
                                                     <tr>
                                                         <td><b>@job.IsBaslik</b></td>
-                                                       
+
                                                         <td>
                                                             <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>&nbsp;
                                                         </td>
@@ -123,13 +115,15 @@
 
                                         </tbody>
                                     </table>
-                              
 
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
                     <!--Devam Etmekte-->
                     <div class="col-lg-3 col-md-6 mt-md-3 d-flex">
                         <div class="item-card d-flex">
@@ -146,7 +140,7 @@
                                                 {
                                                     <tr>
                                                         <td><b>@job.IsBaslik</b></td>
-                                                        
+
 
                                                         <td>
                                                             <a style="background-color:red;color:white;width:10%;"> @job.SonTeslimTarihi.ToShortDateString() </a>&nbsp;
@@ -156,19 +150,19 @@
                                                             <a style="margin-left: 12px; margin-top: 0px " class="btn btn-green" href="/Is/Goruntule/@job.IsId"> Goruntule </a>&nbsp;
                                                         </td>
                                                     </tr>
-                                              
-                                            }
-                                        }
 
-                                            </tbody>
-                                        </table>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
                                 </div>
-                             
+
 
                             </div>
                         </div>
                     </div>
-                    <div class="bg-yellow" style="width:50%"></div>
+
 
                 </div>
 

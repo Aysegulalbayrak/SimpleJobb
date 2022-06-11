@@ -90,11 +90,11 @@
                     <div class="display">@Model.IsKategori.IsKategoriAdi</div>&nbsp;
 
                     <div class="progress">
-                        <div class="bar" style="width:@Model.IlerlemeDurumu%;"></div>
+                        <div class="bar" style="width:@Model.IlerlemeDurumu%;"></div>&nbsp;
                         <div class="percent">@Model.IlerlemeDurumu</div>
                     </div>&nbsp;
 
-                   
+
 
 
                     <div class="display">
@@ -103,24 +103,35 @@
                             <div class="img-bordered"><img style="border-radius: 10px ; width:60px; height:60px;" src="@Model.Uye.Fotograf"></div>
 
                             <div>@Model.Uye.UyeAdi @Model.Uye.UyeSoyadi</div>&nbsp;
-                            @if (Model.DosyaAdresi!=null)
+                            @if (Model.DosyaAdresi != null)
                             {
                                 <div>
                                     <a style="width:60px;" class="btn-block glyphicon-save-file " href="@Model.DosyaAdresi">Dosya</a>
                                 </div>
 
                             }
-                            <br/>
-                            <div><a class="btn-danger" href="/Is/Index">Geri</a></div>
-                        </div>&nbsp;
+                            <br />
 
-                    </div>
-                </fieldset>
+                            @if (Session["UyeId"].ToString() == (Model.UslenenUyeId).ToString() && Model.IlerlemeDurumu != 100)
+                            {
+                                <div><a class="btn-dark" href="/Is/TeslimEt/@Model.IsId">Teslim Et</a></div>
+                            }
+                            <br />
+
+                            <div><a class="btn-danger" href="/Is/Index">Geri</a></div>
+                            <br />
+                        </div>
+                        </div>
+                    </fieldset>
+                </div>
+
             </div>
+
+        </div>
         </div>
 
-    </div>
-</body>
+        </div>
+    </body>
 </html>
 
 

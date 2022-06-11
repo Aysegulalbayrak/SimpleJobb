@@ -9,14 +9,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-   
+
+    @Scripts.Render("~/Scripts/jquery-3.6.0.js")
+    @Scripts.Render("~/Scripts/chart.min.js" )
+    @Scripts.Render("~/Scripts/Common.js" )
     <title>Simple Job</title>
     <style>
-     
+
         .saga-kaydir {
             float: left;
             padding: 0 0 1px 1px;
         }
+
         .container h-100 {
             border: 1px #585957;
             margin-top: 10px;
@@ -25,18 +29,17 @@
             margin-left: 10px;
             background-color: #C0C0C0;
         }
+
         .Logo {
             padding: 10px 10px 50px 50px;
             height: 70px;
             background-color: #c5c7e3;
             border-radius: 20px;
         }
+
         .content-wrapper {
             background-color: #fff;
-           
         }
-        
-        
     </style>
 
     <link rel="stylesheet"
@@ -54,24 +57,25 @@
 </head>
 
 <body>
-    <div class="" id="home">
-        <nav class="navbar navbar-expand-xl" style="padding: 5px; margin-top: 20px; margin-bottom: 10px; margin-left: 20px; margin-right: 20px; height: auto";>
-            <div class="container h-100">
+    
+        <div class="" id="home">
+            <nav class="navbar navbar-expand-xl" style="padding: 5px; margin-top: 20px; margin-bottom: 10px; margin-left: 20px; margin-right: 20px; height: auto" ;>
+                <div class="container h-100">
 
-                @{ string unvan = "2";
-                   
+                    @{ string unvan = "2";
 
-                    if (Session["UyeId"] != null)
-                    {
-                        unvan = Session["UyeYetkiId"].ToString();
-                        string foto=Session["UyeFoto"].ToString();
 
-                        if (unvan == "1")
+                        if (Session["UyeId"] != null)
                         {
+                            unvan = Session["UyeYetkiId"].ToString();
+                            string foto = Session["UyeFoto"].ToString();
+
+                            if (unvan == "4")
+                            {
                                 <ul class="navbar-nav mx-auto h-100">
                                     <li>
-                                       <a>
-                                           <img src="@foto" width="95" height="90" />
+                                        <a>
+                                            <img id="foto" src="@foto" width="95" height="90" />
                                         </a>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -84,7 +88,7 @@
                                            aria-haspopup="true"
                                            aria-expanded="false">
 
-                                            <i></i> 
+                                            <i></i>
                                             @{string adSoyad = "Ayşegül Albayrak";
                                                 if (Session["UyeId"] != null)
                                                 {
@@ -116,8 +120,7 @@
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link"
-                                           href="/Is/Ekle/"
-                                         >
+                                           href="/Is/Ekle/">
                                             <i></i>
                                             İş Ekle
                                         </a>
@@ -135,7 +138,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/Mail/Index/">
+                                        <a class="nav-link" href="/Mail/Gelen/">
 
                                             <i></i> Mail
                                         </a>
@@ -144,7 +147,7 @@
 
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">
+                                        <a class="nav-link" href="/Rapor/Index/">
                                             <i></i>Rapor
                                         </a>
                                     </li>
@@ -154,93 +157,94 @@
                                         </a>
                                     </li>
                                 </ul>
+                            }
+                            else
+                            {
+                                <ul class="navbar-nav mx-auto h-100">
+                                    <li>
+                                        <a>
+                                            <img src="@foto" width="95" height="90" />
+                                        </a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+
+                                        <a class="nav-link dropdown-toggle"
+                                           href="#"
+                                           id="navbarDropdown"
+                                           role="button"
+                                           data-toggle="dropdown"
+                                           aria-haspopup="true"
+                                           aria-expanded="false">
+
+                                            <i></i> @{string adSoyad = "Ayşegül Albayrak";
+                                                if (Session["UyeId"] != null)
+                                                {
+                                                    adSoyad = Session["Uye"].ToString();
+
+                                                }
+                                            }
+                                            @adSoyad
+                                            <br />Personel
+                                            <i class="fas fa-angle-down"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/Profil/Index/">Profilim</a>
+                                        </div>
+                                        <button class="navbar-toggler ml-auto mr-0"
+                                                type="button"
+                                                data-toggle="collapse"
+                                                data-target="#navbarSupportedContent"
+                                                aria-controls="navbarSupportedContent"
+                                                aria-expanded="false"
+                                                aria-label="Toggle navigation">
+                                            <i class="fas fa-bars tm-nav-icon"></i>
+                                        </button>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Takvim/Index/">
+                                            <i></i> Takvim
+
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Is/Islerim/">
+                                            <i></i>
+                                            İşlerim
+                                        </a>
+                                    </li>
+
+                                    <li class="navbar-nav">
+                                        <a class="nav-link " href="/Is/Index/">
+                                            <i></i> İş Listele
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Mail/Gelen/">
+
+                                            <i></i> Mail
+                                        </a>
+
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="/Giris/CikisYap/">
+                                            <i></i> Çıkış
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            }
                         }
-                        else
-                        {
-                            <ul class="navbar-nav mx-auto h-100">
-                                <li>
-                                    <a>
-                                        <img src="@foto" width="95" height="90" />
-                                    </a>
-                                </li>
-                            <li class="nav-item dropdown">
 
-                                <a class="nav-link dropdown-toggle"
-                                   href="#"
-                                   id="navbarDropdown"
-                                   role="button"
-                                   data-toggle="dropdown"
-                                   aria-haspopup="true"
-                                   aria-expanded="false">
-
-                                    <i></i> @{string adSoyad = "Ayşegül Albayrak";
-                                        if (Session["UyeId"] != null)
-                                        {
-                                            adSoyad = Session["Uye"].ToString();
-
-                                        }
-                                    }
-                                    @adSoyad
-                                    <br />Personel
-                                    <i class="fas fa-angle-down"></i>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/Profil/Index/">Profilim</a>
-                                </div>
-                                <button class="navbar-toggler ml-auto mr-0"
-                                        type="button"
-                                        data-toggle="collapse"
-                                        data-target="#navbarSupportedContent"
-                                        aria-controls="navbarSupportedContent"
-                                        aria-expanded="false"
-                                        aria-label="Toggle navigation">
-                                    <i class="fas fa-bars tm-nav-icon"></i>
-                                </button>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Takvim/Index/">
-                                    <i></i> Takvim
-
-                                </a>
-                            </li>
-                   
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Is/Islerim/">
-                                    <i></i>
-                                    İşlerim
-                                </a>
-                            </li>
-
-                            <li class="navbar-nav">
-                                <a class="nav-link " href="/Is/Index/">
-                                    <i></i> İş Listele
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Mail/Index/">
-
-                                    <i></i> Mail
-                                </a>
-
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link " href="/Giris/CikisYap/">
-                                     <i></i> Çıkış
-                                </a>
-                            </li>
-                            
-                        </ul>
-                        }
                     }
 
-                }
-                
-            </div>
+                </div>
 
 
-        </nav>
+            </nav>
 
-    </div>
+        </div>
+    
 
     <div class="Logo" style="margin-right:20px; margin-left:20px">
         <a>

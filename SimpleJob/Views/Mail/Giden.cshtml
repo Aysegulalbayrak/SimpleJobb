@@ -1,7 +1,7 @@
 ﻿@using SimpleJob.Entities.Model
 @model List<Mail>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Giden";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!DOCTYPE html>
@@ -10,11 +10,21 @@
 
     <style>
         body {
+            margin-top: -15px;
             background: white;
             font: 16px Helvetica;
         }
+        #foto {
+            height: 35px;
+            width: 40px;
+        }
 
-        .container-lg {
+        #home {
+            height: 100px;
+        }
+
+        .container-xxl {
+            padding: 2px;
             width: initial;
             margin: 20px auto;
             background: white;
@@ -235,23 +245,24 @@
                 background: #c0392b;
             }
     </style>
+
 </head>
 <body>
-    <div class='container-lg'>
+    <div class='container-xxl'>
 
         <div class='nav_bar'>
-            <button href="/Mail/Gonder/">Yeni Mail</button>
+            <a class="btn btn-danger" href="/Mail/Send">Yeni Mail</a>
             <ul>
-                <li href="/Mail/Index/" class='open'>Gelen Kutusu</li>
-                <li href="/Mail/Index/">Giden Kutusu</li>
-                <li href="/Mail/Index/">Çöp Kutusu</li>
+                <li  Gelen><a style="color:black" href="/Mail/Gelen/">Gelen Kutusu</a></li>
+                <li class='open'><a style="color:black" href="/Mail/Giden/">Giden Kutusu</a></li>
+                <li><a style="color:black" href="/Mail/Garbage/">Çöp Kutusu</a></li>
             </ul>
         </div>
 
         <div class='in_box'>
             <header>
-                <h1>Gelen Kutusu</h1>
-                @using (Html.BeginForm("Index", "Mail", FormMethod.Get))
+                <h1>Giden Kutusu</h1>
+                @using (Html.BeginForm("Giden", "Mail", FormMethod.Get))
                 {
                     <div type='search' placeholder='Ara'>
                         @Html.TextBox("aranacakKelime")&nbsp; <button style="margin-top:1px;" class='reply'>Ara</button>
@@ -278,7 +289,7 @@
 
                         <div class="message">
                             <a href="/Mail/Detay/@mail.MailId" style="color:darkgrey">
-                                <div class="sender">@mail.GondericiMailAdresi</div>
+                                <div class="sender">@mail.Uye.UyeKAdi</div>
                                 <div class="title">@mail.MailBaslik</div>&nbsp;
                             </a>
 
@@ -302,6 +313,8 @@
 
     </div>
 </body>
+
+
 </html>
 
 

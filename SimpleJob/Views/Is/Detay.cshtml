@@ -1,0 +1,52 @@
+﻿@model SimpleJob.Entities.Model.Is
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+    </style>
+</head>
+<body>
+   
+    <div class="container" style="background-color:#c1fbe1; margin:50px; padding:50px" >
+        <fieldset>
+            <legend style="color:red">Detay</legend>
+            <br/>
+
+
+            <div id="baslık2" style="font-size:large; color:#071f55">
+                <b>İş: </b>@Model.IsBaslik
+            </div>&nbsp;
+            <div id="baslık2" style="font-size:large; color:#071f55">
+                <b>Açıklama: </b>
+                @Model.IsAciklama
+            </div>&nbsp;
+            <div id="baslık2" style="font-size:large; color:#071f55"><b>Son Teslim Tarihi: </b>@Model.SonTeslimTarihi.ToShortDateString()</div>&nbsp;
+
+
+            <div>
+                <a style="width:60px;" class="btn-block glyphicon-save-file " href="@Model.DosyaAdresi">Dosya</a>
+            </div>
+            <br />
+
+            @using (Html.BeginForm("Detay", "Is", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.IsId)
+                <input type="submit" style="background-color:#7ca2db" value="Üstlen" />
+            }
+
+            <br />
+            <!--<div><a class="btn-danger" style=" padding:8px;" href="/Is/Index">Geri</a></div>-->
+
+
+
+        </fieldset>
+    </div>
+</body>
+</html>
+

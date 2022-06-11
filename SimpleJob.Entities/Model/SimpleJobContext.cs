@@ -23,7 +23,7 @@ namespace SimpleJob.Entities.Model
         {
             
             modelBuilder.Configurations.Add(new IsKategoriMap());
-            modelBuilder.Configurations.Add(new MailKategoriMap());
+    
             modelBuilder.Configurations.Add(new IsMap());
             modelBuilder.Configurations.Add(new DosyaMap());
             modelBuilder.Configurations.Add(new MailMap());
@@ -40,7 +40,7 @@ namespace SimpleJob.Entities.Model
 
         
         public DbSet<IsKategori> IsKategori { get; set; }
-        public DbSet<MailKategori> MailKategori { get; set; }
+        
         public DbSet<Is> Is { get; set; }
         public DbSet<Dosya> Dosya { get; set; }
         public DbSet<Mail> Mail { get; set; }

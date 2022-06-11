@@ -85,6 +85,13 @@ namespace SimpleJob.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult Goruntule(int id)
+        {
+
+            Uye profil = db.Uye.Include("Unvan").SingleOrDefault(x => x.UyeId == id);
+            return View(profil);
+        }
    
     }
 }

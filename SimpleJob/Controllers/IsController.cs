@@ -21,29 +21,46 @@ namespace SimpleJob.Controllers
 
         public ActionResult Goruntule(int id)
         {
-            Is job = db.Is.Include("IsKategori").Include("Uye").SingleOrDefault(x=>x.IsId==id);
-            
-       
+            Is job = db.Is.Include("IsKategori").Include("Uye").SingleOrDefault(x => x.IsId == id);
+
+
             return View(job);
         }
 
-     
-        [HttpPost]
 
-        public ActionResult Detaylar(int id)
+       [HttpGet]
+       
+        public ActionResult Detay(int id)
         {
-            if (Session["UyeId"]!=null)
+            using (SimpleJobContext db = new SimpleJobContext()) 
             {
+                var job = db.Is.Where(x => x.IsId == id).FirstOrDefault();
+             
+                return View(job);
+            }
+
+        }
+
+        [HttpPost]
+        [Route("Detay/{id}")]
+        public ActionResult Detay(Is pIs)
+        {
+
+            
+            if (Session["UyeId"] != null)
+            {
+                Is job = db.Is.Find(pIs.IsId);
                 int uyeId = int.Parse(Session["UyeId"].ToString());
                 var model = db.Uye.FirstOrDefault(X => X.UyeId == uyeId);
-                var job = db.Is.Find(id);
-                var ustlen = db.Is.FirstOrDefault(x => x.UslenenUyeId == uyeId && x.IsId == id);
-                ustlen.UslenenUyeId = uyeId;
-                ustlen.IsKategoriId = 5;
-                return View(job);
+                job.UslenenUyeId = uyeId;
+                job.IsKategoriId = 8;
+                job.IsDurumu = true;
+                db.SaveChanges();
+                return RedirectToAction("Index");
 
             }
-            return HttpNotFound();
+            return View();
+            
 
         }
 
@@ -106,7 +123,7 @@ namespace SimpleJob.Controllers
         {
          
             pIs.IlerlemeDurumu = 0;
-            pIs.UslenenUyeId = 28;
+            pIs.UslenenUyeId = 48;
             pIs.IsKategoriId = 7;
             //pIs.IsDurumu = true;
             if (DosyaAdresi.ContentLength>0)
@@ -124,6 +141,14 @@ namespace SimpleJob.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult TeslimEt(int id)
+        {
+            Is job = db.Is.Find(id);
+            job.IlerlemeDurumu = 100;
+            job.IsKategoriId = 9;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
 

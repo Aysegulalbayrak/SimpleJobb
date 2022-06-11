@@ -1,9 +1,10 @@
-﻿@model SimpleJob.Entities.Model.Uye
+﻿@model SimpleJob.Entities.Model.Mail
 @{
-    ViewBag.Title = "Ekle";
+    ViewBag.Title = "Send";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<!DOCTYPE html>
+
+!DOCTYPE html>
 <html lang="tr">
 <head>
     <style type="text/css">
@@ -118,26 +119,20 @@
         <div class="form-style-3">
 
 
-            @using (Html.BeginForm("Ekle", "Personel", FormMethod.Post))
+            @using (Html.BeginForm("Send", "Mail", FormMethod.Post))
             {
                 <fieldset>
-                    <legend>Personel</legend>
-                    @Html.Label("Ad: ")
-                    @Html.TextBoxFor(x => x.UyeAdi, new { @class = "form" })
+                    
+                    @Html.Label("Alıcı: ")
+                    @Html.TextBoxFor(x => x.UyeId, new { @class = "form" })
 
-                    @Html.Label("Soyad: ")
-                    @Html.TextBoxFor(x => x.UyeSoyadi, new { @class = "form" })
+                    @Html.Label("Başlık: ")
+                    @Html.TextBoxFor(x => x.MailBaslik, new { @class = "form" })
 
-                    @Html.Label("Email: ")
-                    @Html.TextBoxFor(x => x.UyeEmail, new { @class = "form" })
+                    @Html.Label("Açıklama: ")
+                    @Html.TextBoxFor(x => x.MailAciklama, new { @class = "form" })
 
-                    @Html.Label("Kullanıcı Adı: ")
-                    @Html.TextBoxFor(x => x.UyeKAdi, new { @class = "form" })
-
-                    @Html.Label("Cinsiyet: ")
-                    @Html.TextBoxFor(x => x.UyeCinsiyet, new { @class = "form" })
-
-
+                  
 
                 </fieldset>
 
@@ -148,3 +143,5 @@
     </div>
 </body>
 </html>
+
+

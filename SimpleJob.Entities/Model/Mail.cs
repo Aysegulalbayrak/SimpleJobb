@@ -11,14 +11,12 @@ namespace SimpleJob.Entities.Model
        
             public int MailId { get; set; }
 
-            public string AliciMailAdresi { get; set; }
-            public string GondericiMailAdresi { get; set; }
+            
+            public int GondericiId { get; set; }
             public string MailBaslik { get; set; }
             public string MailAciklama { get; set; }
             public DateTime MailTarih { get; set; }
             public bool MailDurumu { get; set; }
-            public int KategoriId { get; set; }
-            public virtual MailKategori MailKategori { get; set; }
 
             public int UyeId { get; set; }
             public virtual Uye Uye { get; set; }

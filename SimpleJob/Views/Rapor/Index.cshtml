@@ -1,4 +1,7 @@
 ﻿
+@model SimpleJob.Models.IsRaporViewModel
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -11,12 +14,14 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
+
+        /*PieChart*/
         $(document).ready(function () {
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
-                url: '@Url.Action("VisualizeUrunResult", "Default4")',
+                url: '@Url.Action("Grafik", "Rapor")',
                 success: function (result) {
                     google.charts.load('current', {
                         'packages': ['corechart']
@@ -35,13 +40,13 @@
             var dataArray = [];
 
             $.each(result, function (i, obj) {
-                dataArray.push([obj.urunad, obj.stok]);
+                dataArray.push([obj.IsKategoriAdi, obj.IsKategoriSayisi]);
             });
             data.addRows(dataArray);
 
             var columnChartOptions = {
-                title: "Ürün - Stok Grafiği",
-                width: 1000,
+                title: "",
+                width: 700,
                 height: 800,
                 bar: { groupWidth: "20%" },
             };
@@ -51,9 +56,116 @@
 
             columnChart.draw(data, columnChartOptions);
         }
+        /*PieChart END*/
+
+
     </script>
+    <style>
+        .isler {
+            margin: 200px;
+            padding: 10px;
+            width: 700px;
+        }
+
+        .table-avatar {
+            display: block;
+            width: 500px;
+            float: right;
+            margin-top: -750px;
+        }
+    </style>
 </head>
 <body>
-    <div id="Piechart_div"></div>
+    <div class="card" style="width:700px;" id="Piechart_div"></div>
+
+    <div id="personeller" class="card-danger">
+        <table class="table-avatar">
+
+            <thead>
+            <th style="width: 300px; background-color:rosybrown;">Personeller</th></thead>
+            <tbody style="height: 750px;">
+
+
+                @foreach (var p in Model.Tub.Item2)
+
+                {
+
+                    <tr style="padding:2px; margin:2px;">
+                        <td >
+                            <div>
+                                <a href="/Profil/Goruntule/@p.UyeId">
+                                    <img style="width:50px; height:50px;" src="@p.Fotograf" />
+                                    @p.UyeAdi&nbsp;@p.UyeSoyadi
+                                    
+
+                                </a>
+                               
+                                
+                            </div>
+
+                        </td>
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div id="isler" class="form-group">
+        <table class="table table-bordered" style=" margin: 90px; width: 80%; text-align: center; font-family: 'Century Gothic'">
+            <thead style="background-color: rebeccapurple;">
+                <tr>
+                    <th>Personel</th>
+                    <th>İş</th>
+                    <th>İlerleme</th>
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody style="background-color:#fff;">
+                @foreach (var j in Model.Tub.Item1)
+                {
+
+                    string renk = "red";
+                    if (j.IsKategoriId == 9)
+                    {
+                        renk = "red";
+                    }
+                    else
+                    {
+                        renk = "black";
+                    }
+
+
+
+                    <tr style="color:@renk">
+
+                        <td>@j.Uye.UyeAdi&nbsp;@j.Uye.UyeSoyadi</td>
+                        <td>@j.IsBaslik</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar" role="progressbar" aria-valuenow="@j.IlerlemeDurumu"
+                                     aria-valuemin="0" aria-valuemax="100" style="width:@j.IlerlemeDurumu%">
+                                    @j.IlerlemeDurumu
+                                </div>
+                            </div>
+                        </td>
+                        <td>@j.IsKategori.IsKategoriAdi</td>
+
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+
+
+    </div>
+    <br />
 </body>
 </html>

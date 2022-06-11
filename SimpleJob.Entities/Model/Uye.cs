@@ -13,6 +13,8 @@ namespace SimpleJob.Entities.Model
         public string UyeSoyadi { get; set; }
         public string UyeEmail { get; set; }
         public string UyeKAdi { get; set; }
+        public string TelefonKodu { get; set; }
+        public string TelefonNo { get; set; }
 
         public string UyeSifre { get; set; }
 
