@@ -260,7 +260,7 @@
 <body>
     <div class='container-xxl'>
 
-        <div class='nav_bar'>
+        <div class='nav_bar' style="height:500px;">
             <a class="btn btn-danger" href="/Mail/Send">Yeni Mail</a>
             <ul>
                 <li><a style="color:black" href="/Mail/Gelen/"> Gelen Kutusu</a></li>
@@ -270,14 +270,9 @@
         </div>
 
         <div class='in_box'>
+          
             <header>
-                <h1>Gelen Kutusu</h1>
-                @using (Html.BeginForm("Garbage", "Mail", FormMethod.Get))
-                {
-                    <div type='search' placeholder='Ara'>
-                        @Html.TextBox("aranacakKelime")&nbsp; <button style="margin-top:1px;" class='reply'>Ara</button>
-                    </div>
-                }
+                <h1>Çöp Kutusu</h1>
             </header>
 
             <div> </div>
@@ -299,7 +294,7 @@
 
                         <div class="message">
                             <a href="/Mail/Detay/@mail.MailId" style="color:darkgrey">
-                                <div class="sender">@mail.Uye.UyeKAdi</div>
+                                <div class="sender">@mail.Uye.UyeAdi @mail.Uye.UyeSoyadi</div>
                                 <div class="title">@mail.MailBaslik</div>&nbsp;
                             </a>
 

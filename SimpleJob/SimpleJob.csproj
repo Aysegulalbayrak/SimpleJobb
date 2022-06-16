@@ -181,6 +181,10 @@
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Outlook.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -429,7 +433,6 @@
     <Compile Include="Controllers\PersonelController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\RaporController.cs" />
-    <Compile Include="Controllers\TakvimController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3356,10 +3359,8 @@
     <Content Include="BootStraps\simple\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="BootStraps\simple\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-    <Content Include="Views\Takvim\Index.cshtml" />
     <Content Include="Views\Giris.cshtml" />
     <Content Include="Views\Giris\Giris.cshtml" />
-    <Content Include="Views\Takvim\EventEkle.cshtml" />
     <Content Include="Views\Is\Index.cshtml" />
     <Content Include="Views\Is\Goruntule.cshtml" />
     <Content Include="Views\Mail\Giden.cshtml" />
@@ -3388,7 +3389,6 @@
     <Folder Include="BootStraps\simple\.git\refs\tags\" />
     <Folder Include="Files\" />
     <Folder Include="ProfilePhoto\" />
-    <Folder Include="Views\AktivasyonKoduGonder\" />
     <Folder Include="Views\Dosya\" />
   </ItemGroup>
   <ItemGroup>

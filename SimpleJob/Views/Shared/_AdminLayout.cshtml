@@ -13,6 +13,7 @@
     @Scripts.Render("~/Scripts/jquery-3.6.0.js")
     @Scripts.Render("~/Scripts/chart.min.js" )
     @Scripts.Render("~/Scripts/Common.js" )
+    @Scripts.Render("~/Scripts/modernizr")
     <title>Simple Job</title>
     <style>
 
@@ -72,91 +73,88 @@
 
                             if (unvan == "4")
                             {
-                                <ul class="navbar-nav mx-auto h-100">
-                                    <li>
-                                        <a>
-                                            <img id="foto" src="@foto" width="95" height="90" />
-                                        </a>
-                                    </li>
-                                    <li class="nav-item dropdown">
+                                        <ul class="navbar-nav mx-auto h-100">
+                                            <li>
+                                                <a>
+                                                    <img id="foto" src="@foto" width="95" height="90" />
+                                                </a>
+                                            </li>
+                                            <li class="nav-item dropdown">
 
-                                        <a class="nav-link dropdown-toggle"
-                                           href="#"
-                                           id="navbarDropdown"
-                                           role="button"
-                                           data-toggle="dropdown"
-                                           aria-haspopup="true"
-                                           aria-expanded="false">
+                                                <a class="nav-link dropdown-toggle"
+                                                   href="#"
+                                                   id="navbarDropdown"
+                                                   role="button"
+                                                   data-toggle="dropdown"
+                                                   aria-haspopup="true"
+                                                   aria-expanded="false">
 
-                                            <i></i>
-                                            @{string adSoyad = "Ayşegül Albayrak";
-                                                if (Session["UyeId"] != null)
-                                                {
-                                                    adSoyad = Session["Uye"].ToString();
+                                                    <i></i>
+                                                    @{string adSoyad = "Ayşegül Albayrak";
+                                                        if (Session["UyeId"] != null)
+                                                        {
+                                                            adSoyad = Session["Uye"].ToString();
 
-                                                }
-                                            }
-                                            @adSoyad
-                                            <br />Yönetici
-                                            <i class="fas fa-angle-down"></i>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="/Profil/Index/">Profilim</a>
-                                        </div>
-                                        <button class="navbar-toggler ml-auto mr-0"
-                                                type="button"
-                                                data-toggle="collapse"
-                                                data-target="#navbarSupportedContent"
-                                                aria-controls="navbarSupportedContent"
-                                                aria-expanded="false"
-                                                aria-label="Toggle navigation">
-                                            <i class="fas fa-bars tm-nav-icon"></i>
-                                        </button>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/Takvim/Index/">
-                                            <i></i> Takvim
+                                                        }
+                                                    }
+                                                    @adSoyad
+                                                    <br />Yönetici
+                                                    <i class="fas fa-angle-down"></i>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="/Profil/Index/">Profilim</a>
+                                                </div>
+                                                <button class="navbar-toggler ml-auto mr-0"
+                                                        type="button"
+                                                        data-toggle="collapse"
+                                                        data-target="#navbarSupportedContent"
+                                                        aria-controls="navbarSupportedContent"
+                                                        aria-expanded="false"
+                                                        aria-label="Toggle navigation">
+                                                    <i class="fas fa-bars tm-nav-icon"></i>
+                                                </button>
 
-                                        </a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link"
-                                           href="/Is/Ekle/">
-                                            <i></i>
-                                            İş Ekle
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/Personel/Ekle/">
-                                            <i></i>
-                                            Personel Ekle
-                                        </a>
-                                    </li>
+                                            <li class="navbar-nav">
+                                                <a class="nav-link " href="/Is/Index/">
+                                                    <i></i> İş Listele
+                                                </a>
+                                            </li>
 
-                                    <li class="navbar-nav">
-                                        <a class="nav-link " href="/Is/Index/">
-                                            <i></i> İş Listele
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/Mail/Gelen/">
-
-                                            <i></i> Mail
-                                        </a>
-
-                                    </li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link"
+                                                   href="/Is/Ekle/">
+                                                    <i></i>
+                                                    İş Ekle
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/Personel/Ekle/">
+                                                    <i></i>
+                                                    Personel Ekle
+                                                </a>
+                                            </li>
 
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/Rapor/Index/">
-                                            <i></i>Rapor
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="/Giris/CikisYap/">
-                                            <i></i> Çıkış
-                                        </a>
-                                    </li>
-                                </ul>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/Mail/Gelen/">
+
+                                                    <i></i> Mail
+                                                </a>
+
+                                            </li>
+
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/Rapor/Index/">
+                                                    <i></i>Rapor
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link " href="/Giris/CikisYap/">
+                                                    <i></i> Çıkış
+                                                </a>
+                                            </li>
+                                        </ul>
                             }
                             else
                             {
@@ -199,12 +197,7 @@
                                                 aria-label="Toggle navigation">
                                             <i class="fas fa-bars tm-nav-icon"></i>
                                         </button>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/Takvim/Index/">
-                                            <i></i> Takvim
-
-                                        </a>
-                                    </li>
+                                 
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="/Is/Islerim/">

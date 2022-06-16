@@ -81,17 +81,15 @@
 <body>
     <div class="container-lg">
         <div class='mail_box'>
+          
             <div>
                 <h1 style="font-size:x-large">@Model.MailBaslik</h1>
-
+                <p><b>Alıcı: </b>@Model.Uye.UyeAdi</p>
                 <h3 style="font-size:medium">@Model.MailTarih</h3>
                 <p style="font-size:small">@Model.MailAciklama</p>
 
+                <a style=" background-color:coral; height:40px ; " class="btn btn-dark" href="/Mail/Sil/@Model.MailId">Sil</a>&nbsp;
 
-                @using (Html.BeginForm("Garbage", "Mail", FormMethod.Post))
-                {
-                    <a href="/Mail/Garbage/@Model.MailId/" class='reply'>Sil</a>
-                }
             </div>
            
         </div>

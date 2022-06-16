@@ -94,7 +94,7 @@ namespace SimpleJob.Controllers
         public ActionResult Duzenle(Is pIs, HttpPostedFileBase DosyaAdresi)
         {
             Is job = db.Is.Find(pIs.IsId);
-            job.IsBaslik = pIs.IsBaslik;
+            
             job.IsAciklama = pIs.IsAciklama;
 
             

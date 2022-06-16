@@ -3,6 +3,9 @@ using SimpleJob.Models;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Net;
+using System.Net.Mail;
+using Mail = SimpleJob.Entities.Model.Mail;
 
 namespace SimpleJob.Controllers
 {
@@ -22,7 +25,7 @@ namespace SimpleJob.Controllers
             pUye.UyeKAdi = pUye.UyeEmail;
 
             //Uye uye = db.Uye.AsNoTracking().Where(x => (x.UyeEmail == pUye.UyeEmail || x.UyeKAdi == pUye.UyeKAdi) && x.UyeSifre == pUye.UyeSifre).FirstOrDefault();
-            var uye = db.Uye.FirstOrDefault(x => x.UyeEmail == pUye.UyeEmail && x.UyeSifre == pUye.UyeSifre);
+            var uye = db.Uye.FirstOrDefault(x => (x.UyeEmail == pUye.UyeEmail || x.UyeKAdi == pUye.UyeKAdi) && x.UyeSifre == pUye.UyeSifre);
             
 
             if (uye != null)
@@ -35,7 +38,7 @@ namespace SimpleJob.Controllers
                     Session["UyeFoto"] = uye.Fotograf;
                     Session["UyeYetkiId"] = uye.UyeUnvanId;
                     //Session["UyeYetkiAdi"] = uye.Unvan.UnvanAdi;
-                    return RedirectToAction("Index", "Takvim");
+                    return RedirectToAction("Index", "Is");
 
                 }
                 else
@@ -57,5 +60,6 @@ namespace SimpleJob.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Giris");
         }
+
     }
 }

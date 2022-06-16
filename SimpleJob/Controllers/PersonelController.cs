@@ -36,59 +36,25 @@ namespace SimpleJob.Controllers
             pUye.UyeIseBaslamaTarihi = DateTime.Now;
             pUye.Fotograf = "/Files/1000_F_223507324_jKl7xbsaEdUjGr42WzQeSazKRighVDU4.jpg";
             pUye.UyeSifre = ParolaOlusturma.Olustur(8);
-            /*
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("ayeglalbayrak@yahoo.com"));
-            email.To.Add(MailboxAddress.Parse(pUye.UyeEmail));
-            email.Subject = "Test Email Subject";
-            email.Body = new TextPart(TextFormat.Html) { Text = "<h1>Example HTML Message Body</h1>" };
-
-            // send email
-            var smtp = new SmtpClient();
-            smtp.Connect("smtp.mail.yahoo.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("[USERNAME]", "[PASSWORD]");
-            smtp.Send(email);
-            smtp.Disconnect(true);
-            /*
-            MailAddress alici = new MailAddress(pUye.UyeEmail);
-            MailAddress gonderen = new MailAddress("ayeglalbayrak@yahoo.com", "SimpleJob");
            
-         
-            using (var smtp = new SmtpClient
-            {
-                Host = "smtp.mail.yahoo.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(gonderen.Address, "Aysgl.123456")
-            })
-            {
-                using (var message = new MailMessage(gonderen, alici))
-                {
-                    message.Subject = "Simplejob Ekibine Hoşgeldiniz";
-                    message.IsBodyHtml = true;
-                    message.Body = "Sayın" + pUye.UyeAdi + " " + pUye.UyeSoyadi + "<br/>Seni aramızda görmekten mutluluk duyuyoruz. Uyelik işlemi sırasında sana geçici bir şifre atadık.<br/>Bu şifreyle giriş yapdıktan sonra şifrenizi değişdirmenizi öneririz.<br/> Geçici Şifreniz:" + pUye.UyeSifre;
+            //Eposta gönderme
+            SmtpClient clint = new SmtpClient("smtp-mail.outlook.com");
+            clint.Port = 587;
+            clint.DeliveryMethod = SmtpDeliveryMethod.Network;
+            clint.UseDefaultCredentials = false;
+            NetworkCredential cr = new NetworkCredential("ala396397@outlook.com", "Ayse.123456");
+            clint.EnableSsl = true;
+            clint.Credentials = cr;
 
-                    smtp.Send(message);
-                }
-            }
-            /*
-
-            MailMessage mm = new MailMessage(mail.AliciMailAdresi, mail.GondericiMailAdresi);
+            MailMessage mm = new MailMessage("ala396397@outlook.com",pUye.UyeEmail);
             mm.Subject = "Simplejob Ekibine Hoşgeldiniz";
             mm.IsBodyHtml = true;
-            mm.Body = "Sayın" + pUye.UyeAdi + " " + pUye.UyeSoyadi + "<br/>Seni aramızda görmekten mutluluk duyuyoruz. Uyelik işlemi sırasında sana geçici bir şifre atadık.<br/>Bu şifreyle giriş yapdıktan sonra şifrenizi değişdirmenizi öneririz.<br/> Geçici Şifreniz:" + pUye.UyeSifre;
-
-            SmtpClient clint = new SmtpClient();
-            clint.Host = "smtp.gmail.com";
-            clint.Port = 587;
-            clint.EnableSsl = true;
-            NetworkCredential = new NetworkCredential(gonderen.Address, "E.123456")
-            */
+            
+            mm.Body = "<img style='height:80px; widht:80px;' src='C:/Users/asus/source/repos/SimpleJobb/SimpleJob/images/son.png'/></br>" + "Sayın " + pUye.UyeAdi + " " + pUye.UyeSoyadi + "<br/>Seni aramızda görmekten mutluluk duyuyoruz. Üyelik işlemi sırasında sana geçici bir şifre atadık.<br/>Bu şifreyle giriş yapdıktan sonra şifrenizi değişdirmenizi öneririz.<br/> <b>Geçici Şifreniz: </b>" + pUye.UyeSifre;
+            clint.Send(mm);
             db.Uye.Add(pUye);
             db.SaveChanges();
-            return RedirectToAction("Index", "Takvim");
+            return RedirectToAction("Index", "Rapor");
         }
         
 

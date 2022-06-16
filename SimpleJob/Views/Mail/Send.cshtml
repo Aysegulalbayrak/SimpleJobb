@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <style type="text/css">
@@ -121,22 +121,22 @@
 
             @using (Html.BeginForm("Send", "Mail", FormMethod.Post))
             {
-                <fieldset>
-                    
-                    @Html.Label("Alıcı: ")
-                    @Html.TextBoxFor(x => x.UyeId, new { @class = "form" })
+            <fieldset>
 
-                    @Html.Label("Başlık: ")
-                    @Html.TextBoxFor(x => x.MailBaslik, new { @class = "form" })
+                @Html.Label("Alıcı:")
+                @Html.DropDownListFor(x => x.UyeId, (List<SelectListItem>)ViewBag.Uyeler, new { @class = "form-control" })
 
-                    @Html.Label("Açıklama: ")
-                    @Html.TextBoxFor(x => x.MailAciklama, new { @class = "form" })
+                @Html.Label("Başlık: ")
+                @Html.TextBoxFor(x => x.MailBaslik, new { @class = "form" })
 
-                  
+                @Html.Label("Açıklama: ")
+                @Html.TextBoxFor(x => x.MailAciklama, new { @class = "form" })
 
-                </fieldset>
 
-                <input type="submit" value="Kaydet" />
+
+            </fieldset>
+
+                <input type="submit" value="Gönder" />
             }
 
         </div>

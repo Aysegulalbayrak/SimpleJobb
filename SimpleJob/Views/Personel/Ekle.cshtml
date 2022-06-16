@@ -120,26 +120,26 @@
 
             @using (Html.BeginForm("Ekle", "Personel", FormMethod.Post))
             {
-                <fieldset>
-                    <legend>Personel</legend>
-                    @Html.Label("Ad: ")
-                    @Html.TextBoxFor(x => x.UyeAdi, new { @class = "form" })
+            <fieldset>
+                <legend>Personel</legend>
+                @Html.Label("Ad: ")
+                @Html.TextBoxFor(x => x.UyeAdi, new { @class = "form required>" }) 
 
-                    @Html.Label("Soyad: ")
-                    @Html.TextBoxFor(x => x.UyeSoyadi, new { @class = "form" })
+                @Html.Label("Soyad: ")
+                @Html.TextBoxFor(x => x.UyeSoyadi, new { @class = "form required>" })
 
-                    @Html.Label("Email: ")
-                    @Html.TextBoxFor(x => x.UyeEmail, new { @class = "form" })
+                @Html.Label("Email: ")
+                @Html.TextBoxFor(x => x.UyeEmail, new { @class = "form required>" })
 
-                    @Html.Label("Kullanıcı Adı: ")
-                    @Html.TextBoxFor(x => x.UyeKAdi, new { @class = "form" })
+                @Html.Label("Kullanıcı Adı: ")
+                @Html.TextBoxFor(x => x.UyeKAdi, new { @class = "form required>" })
 
-                    @Html.Label("Cinsiyet: ")
-                    @Html.TextBoxFor(x => x.UyeCinsiyet, new { @class = "form" })
+                @Html.Label("Cinsiyet: ")
+                @Html.TextBoxFor(x => x.UyeCinsiyet, new { @class = "form required>" })
 
 
 
-                </fieldset>
+            </fieldset>
 
                 <input type="submit" value="Kaydet" />
             }
