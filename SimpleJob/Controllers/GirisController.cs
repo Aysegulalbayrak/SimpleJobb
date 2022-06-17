@@ -24,7 +24,7 @@ namespace SimpleJob.Controllers
         {
             pUye.UyeKAdi = pUye.UyeEmail;
 
-            //Uye uye = db.Uye.AsNoTracking().Where(x => (x.UyeEmail == pUye.UyeEmail || x.UyeKAdi == pUye.UyeKAdi) && x.UyeSifre == pUye.UyeSifre).FirstOrDefault();
+           
             var uye = db.Uye.FirstOrDefault(x => (x.UyeEmail == pUye.UyeEmail || x.UyeKAdi == pUye.UyeKAdi) && x.UyeSifre == pUye.UyeSifre);
             
 
@@ -37,7 +37,7 @@ namespace SimpleJob.Controllers
                     Session["Uye"] = uye.UyeAdi+" "+uye.UyeSoyadi;
                     Session["UyeFoto"] = uye.Fotograf;
                     Session["UyeYetkiId"] = uye.UyeUnvanId;
-                    //Session["UyeYetkiAdi"] = uye.Unvan.UnvanAdi;
+                    
                     return RedirectToAction("Index", "Is");
 
                 }
@@ -56,7 +56,7 @@ namespace SimpleJob.Controllers
         public ActionResult CikisYap()
         {
             Session.Clear();
-            //giris.Clear();
+            
             FormsAuthentication.SignOut();
             return RedirectToAction("Giris");
         }
