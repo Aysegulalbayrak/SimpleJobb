@@ -17,9 +17,7 @@ namespace SimpleJob.Entities.Model
         public string IsAciklama { get; set; }
         public DateTime SonTeslimTarihi { get; set; }
         public int IlerlemeDurumu { get; set; }
-        //public virtual Dosya Dosya { get; set; }
-        //public int DosyaId { get; set; }
-
+     
         public string DosyaAdresi { get; set; }
         public bool IsDurumu { get; set; }
 
